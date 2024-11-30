@@ -1,5 +1,7 @@
 package sha256_1;
 
+import java.util.Scanner;
+
 public class City {
 	private String name;
 	private String region;
@@ -7,6 +9,8 @@ public class City {
 	private long population;
 	private String postalCode;
 	private String phoneCode;
+	
+	// I haven't added a constructor because i didn't see this clause in the homework :) 
 	
 	public String getName() {
 	    return name;
@@ -57,5 +61,38 @@ public class City {
 
 	public void setPhoneCode(String phoneCode) {
 	    this.phoneCode = phoneCode;
+	}
+	
+	public void print() {
+		System.out.printf("Name -> %s%n"
+				+ "Region -> %s%n"
+				+ "Country -> %s%n"
+				+ "Population -> %d%n"
+				+ "Postal Code ->%s%n"
+				+ "Phone Code ->%s%n", 
+				name, region, country,
+				population, postalCode, phoneCode);
+	}
+	
+	public void setVariables() {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Name: ");
+		setName(scanner.next());
+		
+		System.out.println("Region: ");
+		setRegion(scanner.next());
+		
+		System.out.println("Country: ");
+		setCountry(scanner.next());
+		
+		System.out.println("Population: ");
+		setPopulation(scanner.nextLong());
+		
+		System.out.println("ostalCode: ");
+		setPostalCode(scanner.next());
+		
+		System.out.println("PhoneCode: ");
+		setPhoneCode(scanner.next());
 	}
 }

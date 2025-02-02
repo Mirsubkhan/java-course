@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #00FF00;
+    text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+}
+
+.form-edit, .form-delete {
+    margin: 20px 0;
+}
+
+.input-field {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    border: 2px solid #00FF00;
+    background-color: transparent;
+    color: #00FF00;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+}
+
+.input-field::placeholder {
+    color: #00FF00;
+}
+
+.btn-edit, .btn-delete, .btn-back {
+    background-color: #00FF00;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-edit:hover, .btn-delete:hover, .btn-back:hover {
+    background-color: #00CC00;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background-color: #FF0000;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #CC0000;
+    transform: scale(1.05);
+}
+
+.separator {
+    margin: 20px auto;
+    border: 1px solid #00FF00;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.message {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.delete-warning {
+    font-size: 1.5rem;
+    color: #FF0000;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.btn-back {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00FF00;
+    color: black;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+    background-color: #00CC00;
+    transform: scale(1.05);
+}

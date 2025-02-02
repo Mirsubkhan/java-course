@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SBlog | Create Post</title>
+    <link rel="stylesheet" href="/create-post.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Hello, <span th:text="${username}"></span>!</h1>
+        
+        <form action="/post/create" method="post" class="form-create-post">
+            <input name="title" placeholder="Title" required class="input-field" />
+            <textarea name="content" placeholder="Content" required class="input-field"></textarea>
+            <button type="submit" class="btn-publish">Publish</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SBlog | Admin</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Hello, <span th:text="${username}"></span>!</h1>
+        
+        <h2 class="subtitle">User Management</h2>
+        
+        <div class="user-list">
+            <div th:each="user : ${users}" class="user-item">
+                <span class="user-name" th:text="${user.username}"></span>
+                <form th:action="@{/admin/delete/{uid}(uid=${user.id})}" method="post" class="delete-form">
+                    <button type="submit" class="btn-delete" th:id="${user.id}">Delete</button>
+                </form>
+            </div>
+        </div>
+        
+        <br>
+
+        <a href="/admin/quit" class="btn-quit">Quit</a>
+        <span th:text="${message}"></span>
+    </div>
+</body>
+</html>

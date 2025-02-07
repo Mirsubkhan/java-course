@@ -1,0 +1,51 @@
+SHOW PDBS;
+ALTER SESSION SET CONTAINER=XEPDB1;
+
+ALTER SESSION SET "_ORACLE_SCRIPT"=true;
+
+CREATE USER user1 IDENTIFIED BY user1;
+GRANT CREATE SESSION TO user1;
+
+CREATE ROLE user1_role;
+GRANT CREATE TABLE, CREATE SESSION TO user1_role;
+GRANT ALTER ANY TABLE, DROP ANY TABLE TO user1_role;
+
+ALTER SESSION SET CURRENT_SCHEMA = user1;
+
+
+CREATE TABLE users (
+    id         NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    username   VARCHAR2(255) NOT NULL UNIQUE,
+    email      VARCHAR2(255) NOT NULL UNIQUE,
+    password   VARCHAR2(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE posts (
+    id         NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    author_id  NUMBER NOT NULL,
+    title      VARCHAR2(255) NOT NULL,
+    content    CLOB NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_posts_author FOREIGN KEY (author_id) REFERENCES users (id) ON DELETE CASCADE
+);
+
+CREATE TABLE comments (
+    id         NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    post_id    NUMBER NOT NULL,
+    author_id  NUMBER NOT NULL,
+    content    CLOB NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_comments_post FOREIGN KEY (post_id) REFERENCES posts (id) ON DELETE CASCADE,
+    CONSTRAINT fk_comments_author FOREIGN KEY (author_id) REFERENCES users (id) ON DELETE CASCADE
+);
+
+INSERT INTO posts (author_id, title, content, created_at) VALUES(1, 'GAR8S', 'THE BEST CAR EVER', CURRENT_TIMESTAMP);
+
+-- drop table users;
+-- drop table posts;
+-- drop table comments;
+
+SELECT * FROM users;
+SELECT * FROM posts;
+SELECT * FROM comments;

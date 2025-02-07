@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SBlog | Comments</title>
+    <link rel="stylesheet" href="/comments.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Post Details</h1>
+
+        <div class="post">
+            <h2 th:text="${post.title}"></h2>
+            <p th:text="${post.content}"></p>
+            <span>Author: <span th:text="${post.author.username}"></span></span>
+        </div>
+
+        <hr class="separator">
+
+        <h3 class="section-title">Leave a Comment</h3>
+        <form action="/comments/comments/add" method="post">
+            <input type="hidden" name="postId" th:value="${post.id}">
+            <input type="text" name="text" placeholder="Write your comment" required class="comment-input">
+            <button type="submit" class="btn-comment">Post Comment</button>
+        </form>
+
+        <hr class="separator">
+
+        <h3 class="section-title">Comments</h3>
+        <div class="comments">
+            <div th:each="comment : ${comments}" class="comment-item">
+                <p><strong th:text="${comment.author.username}"></strong>: <span th:text="${comment.content}"></span></p>
+            </div>
+        </div>
+
+        <br>
+
+        <a href="/post/index" class="btn-back">Back to Posts</a>
+    </div>
+</body>
+</html>

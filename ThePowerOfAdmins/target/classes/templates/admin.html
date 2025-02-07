@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin System</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Hello, <span th:text="${username}"></span>!</h1>
+        <hr>
+        <h2>Employee Management</h2>
+        
+        <hr>
+        <h3>Fire</h3>
+        <form action="/admin/fireEmployee" method="post">
+        	<input type="text" name="uid" placeholder="employee id...">
+        	<button>Fire employee</button>
+        </form>
+        
+        <hr>
+        <h3>Filter</h3>
+        <form action="/admin/filter" method="get">
+        	<input type="text" name="filter" placeholder="employee job title...">
+        	<button>Filter by Job Title</button>
+        </form>
+        
+        <div th:if="${employees != null and not #lists.isEmpty(employees)}">
+    		<div th:each="employee : ${employees}">
+        		<span th:text="${employee.fullName}"> | </span>
+        		<span th:text="${employee.jobTitle}"> | </span>
+        		<span th:text="${employee.address}"> | </span>
+        		<span th:text="${employee.salary}"></span>
+        		<br><br>
+    		</div>
+		</div>
+        
+        <hr>
+
+        <a href="/admin/quit">Quit</a>
+        
+        <form action="/admin/fireAdmin" method="get">
+        	<input type="hidden" name="username" th:value="${username}">
+        	<button>Fire myself</button>
+        </form>
+        
+        <hr>
+        
+        <span th:text="${message}"></span>
+    </div>
+</body>
+</html>

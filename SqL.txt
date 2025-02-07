@@ -1,0 +1,79 @@
+SHOW PDBS;
+ALTER SESSION SET CONTAINER=XEPDB1;
+
+ALTER SESSION SET "_ORACLE_SCRIPT"=true;
+
+CREATE USER user1 IDENTIFIED BY user1;
+GRANT CREATE SESSION TO user1;
+
+CREATE ROLE user1_role;
+GRANT CREATE TABLE, CREATE SESSION TO user1_role;
+GRANT ALTER ANY TABLE, DROP ANY TABLE TO user1_role;
+
+ALTER SESSION SET CURRENT_SCHEMA = user1;
+
+CREATE TABLE admins (
+    id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    username VARCHAR2(255) NOT NULL UNIQUE,
+    password VARCHAR2(255) NOT NULL
+);
+
+CREATE TABLE employees (
+    id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    full_name VARCHAR2(255) NOT NULL,
+    address VARCHAR2(255) NOT NULL,
+    job_title VARCHAR2(255) NOT NULL,
+    salary INT NOT NULL
+);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('John Smith', '123 Main St, New York', 'Software Engineer', 85000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Sarah Johnson', '456 Oak Ave, Chicago', 'Data Analyst', 65000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Michael Brown', '789 Pine Rd, Los Angeles', 'Project Manager', 95000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Emma Wilson', '321 Maple St, Houston', 'UX Designer', 75000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('David Miller', '901 Cedar Ave, Phoenix', 'DevOps Engineer', 90000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Olivia Davis', '234 Walnut St, Philadelphia', 'Product Manager', 80000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('William Anderson', '567 Spruce Rd, San Antonio', 'Backend Developer', 82000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Ava Garcia', '890 Cherry Ave, San Diego', 'Quality Assurance', 68000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('James Rodriguez', '345 Birch St, Dallas', 'Frontend Developer', 78000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Sophia Martinez', '678 Cypress Rd, San Jose', 'Technical Writer', 62000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Robert Taylor', '543 Fir Ave, Austin', 'Database Administrator', 92000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Mia Hernandez', '765 Elm St, Jacksonville', 'Business Analyst', 72000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Richard Lewis', '876 Ash Ave, San Francisco', 'Cloud Architect', 100000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Elizabeth Clark', '654 Beech Rd, Indianapolis', 'Security Specialist', 85000);
+
+INSERT INTO employees (full_name, address, job_title, salary) VALUES 
+('Daniel Scott', '987 Pine Ave, Columbus', 'Network Engineer', 88000);
+
+-- drop table employees;
+-- drop table admins;
+
+SELECT * FROM employees;
+SELECT * FROM admins;
+SELECT * FROM employees WHERE id = 1;
